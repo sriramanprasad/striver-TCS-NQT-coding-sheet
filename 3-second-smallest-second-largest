@@ -1,0 +1,132 @@
+Input: [1,2,4,7,7,5] Output: Second Smallest : 2 Second Largest : 5 Explanation: The elements are as follows 1,2,3,5,7,7 and hence second largest of these is 5 and second smallest is 2
+
+Example 2: Input: [1] Output: Second Smallest : -1 Second Largest : -1 Explanation: Since there is only one element in the array, it is the largest and smallest element present in the array. There is no second largest or second smallest element present.
+
+#approch 1  note only works for no-duplicates
+
+a=input()
+
+a=a.split()
+
+a.sort()
+
+print('second smallest',a[1])
+
+print('second largest',a[len(a)-2])
+
+1 2 3 4 5 6
+second smallest 2
+second largest 5
+
+Time Complexity: O(NlogN), For sorting the array
+
+Space Complexity: O(1)
+
+#better approch
+
+a=input()
+
+a=a.split()
+
+max1=float('-inf')
+
+min1=float('inf')
+
+for i in a:
+
+    if(int(i)>max1):
+
+        max1=int(i)
+
+    if(int(i)<min1):
+
+        min1=int(i)
+
+​
+
+max2=float('-inf')
+
+min2=float('inf')
+
+for i in a:
+
+    if(int(i)>max2 and int(i)!=max1):
+
+        max2=int(i)
+
+    if(int(i)<min2 and int(i)!=min1):
+
+        min2=int(i)
+
+ 
+
+print('second min',min2)
+
+print('second max',max2)
+
+​
+
+1 2 3 4 5
+second min 2
+second max 4
+
+Time Complexity: O(N), We do two linear traversals in our array
+
+Space Complexity: O(1)
+
+#approch3 in 1 loop
+
+​
+
+a=input()
+
+a=a.split()
+
+max1=float('-inf')
+
+max2=float('-inf')
+
+min1=float('inf')
+
+min2=float('inf')
+
+for i in a:
+
+    if(int(i)>max1):
+
+        max2=max1
+
+        max1=int(i)
+
+        
+
+    elif(int(i)>max2 and int(i)!=max1):
+
+        max2=int(i)
+
+        
+
+for i in a:
+
+    if(int(i)<min1):
+
+        min2=min1
+
+        min1=int(i)
+
+    elif(int(i)<min2 and int(i)!=min1):
+
+        min2=int(i)
+
+print('second largest:',max2)
+
+print('second smallest:',min2)
+
+1 2 3 4 5 6 7
+second largest: 6
+second smallest: 2
+
+Time Complexity: O(N), We do one traversal in our array
+
+Space Complexity: O(1)
+
